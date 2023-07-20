@@ -1,0 +1,18 @@
+{
+    "name": "devchithu/laravel-filter-sorting-searchable",
+    "description": "This package used to filter, sorting(asc, desc), searchable. php version 7.2^",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Devchithu\\LaravelFilterSortingSearchable\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "chithresu ganesan"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
