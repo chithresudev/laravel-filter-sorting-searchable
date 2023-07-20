@@ -158,7 +158,7 @@ Code,
 1. filter is `true` default create input box type = 'text', if you want different input type like (selelect, radio, range) below code put the array params
    `'type' => 'text' // 'type' => 'select' or  radio, range`
 
-Here, if you `select ` option using  multiple option value data like `'custom-multiple-data' => ['All', 'active', 'in_active']
+Here, if you `select ` option using  multiple option value data like `'multiple_option' => ['All', 'active', 'in_active']
 
 ```blade
  @filterSortSearchable(['sorting' => true, 'filter' => true, 'type' => 'select', 'field_name' => 'status', 'label_name' => 'Status', 'custom-multiple-data' => ['All', 'active', 'in_active']])
