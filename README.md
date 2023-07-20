@@ -19,7 +19,7 @@ or require in *composer.json*:
 ```json
 {
     "require": {
-        "devchithu/laravel-filter-sorting-searchable": "^2.0"
+        "devchithu/laravel-filter-sorting-searchable": "^1.0"
     }
 }
 ```
