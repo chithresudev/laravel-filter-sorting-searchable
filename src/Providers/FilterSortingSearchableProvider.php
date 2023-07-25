@@ -30,5 +30,18 @@ class FilterSortingSearchableProvider extends ServiceProvider
         return "<?php Devchithu\LaravelFilterSortingSearchable\Filter::applyBtn({$input_btn_array}) ?>";
 
         });
+
+        Blade::directive('searchable', function ($input_search_array) {
+
+            return "<?php Devchithu\LaravelFilterSortingSearchable\Filter::search({$input_search_array}) ?>";
+    
+            });
+
+        Blade::directive('bindingParams', function ($input_params) {
+
+            return "<?php Devchithu\LaravelFilterSortingSearchable\Filter::bindingParams({$input_params}) ?>";
+    
+            });
+            
         }
 }
