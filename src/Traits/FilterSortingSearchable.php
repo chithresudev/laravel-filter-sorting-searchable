@@ -16,15 +16,19 @@ trait FilterSortingSearchable
      */
     public function scopeFilterable(Builder $query) {
 
-        $params = app('request')->except(['page', '_token']);
+        $params = app('request')->except(['page', '_token', 'search']);
         if(is_array($this->filterable)) {
             foreach($params as $column_key => $param) {
                 if(in_array($column_key, $this->filterable)) {
-                    $query->where($column_key, 'LIKE', '%' . $param . '%');
+                    $array_multipleValue = explode(',', $param);
+                    if(count($array_multipleValue) != 1) {
+                        $query->OrWhereBetween($column_key, $array_multipleValue);
+                    } else {
+                        $query->OrWhere($column_key, 'LIKE', '%' . $param . '%');
+                    }
              }
         }
     }
-
         return $query;
     }
 
@@ -36,12 +40,10 @@ trait FilterSortingSearchable
      */
     public function scopeSearchable(Builder $query) {
 
-        $params = app('request')->except(['page', '_token']);
+        $search = app('request')->search;
         if(is_array($this->searchable)) {
-            foreach($params as $column_key => $param) {
-                if(in_array($column_key, $this->searchable)) {
-                    $query->where($column_key, 'LIKE', '%' . $param . '%');
-             }
+            foreach($this->searchable as $field) {
+                    $query->orWhere($field, 'LIKE' , '%' .  $search . '%');
         }
     }
 
@@ -56,12 +58,14 @@ trait FilterSortingSearchable
      */
     public function scopeSorting(Builder $query) {
         
-        return $query->when(app('request')->sort_direction, function($order) {
-            return $order->orderBy(app('request')->sort_field, app('request')->sort_direction);
-        });
-
-        return $query;
-    }
+        if(is_array($this->sorting)) {
+            if(in_array(app('request')->sort_field, $this->sorting)) {
+                $query->when(app('request')->sort_direction, function($order) {
+                    return $order->orderBy(app('request')->sort_field, app('request')->sort_direction);
+                });
+            }
+        }
+   }
 
 
 }
