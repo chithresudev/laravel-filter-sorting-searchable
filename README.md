@@ -77,11 +77,15 @@ Two Type of blade extension using script file.
 Must push that js file in blade, where-ever your want like (better than push that js file into main index blade.php):
 
 ```
+    <script src="{{ asset('filter-sorting-searchable.js') }}"></script>
+```
+OR,
+
+```
 @push('scripts')
     <script src="{{ asset('filter-sorting-searchable.js') }}"></script>
 @endpush
 ```
-Then, 
 
 ### Sorting
 
