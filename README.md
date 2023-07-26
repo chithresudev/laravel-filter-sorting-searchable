@@ -69,7 +69,7 @@ php artisan vendor:publish --provider="Devchithu\LaravelFilterSortingSearchable\
 ```
 See public/js/filter-sorting-searchable.js (if you want any change update this code inside)
 
-# Bootstrap Inline filter sorting and Modal, Offcanvas extension
+# Bootstrap Inline filter sorting extension
 
 Two Type of blade extension using script file.
 
@@ -314,6 +314,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 }
 ```
 
+There is a blade extension for you to use **@searchable()**
+
+```blade
+@searchable()
+```
 ### Controller's `index()` method
 
 ```php
@@ -336,7 +341,29 @@ public function index(Request $request)
     return view('user.index', ['users' => $users]);
 }
 ```
+# Binding Params
+What are field sorting, searching and filterting below code
+Which place to you want binding parameters declare the **@bindingParams()**
+
+```php
+@bindingParams()
+```
+OR,
+
 ##  2. Bootstrap filter using Modal, Offcanvas Blade Extension
+
+Must push that js file in blade, where-ever your want like (better than push that js file into main index blade.php):
+
+```
+    <script src="{{ asset('filter-sorting-searchable-modal-offcanvas.js') }}"></script>
+```
+OR,
+
+```
+@push('scripts')
+    <script src="{{ asset('filter-sorting-searchable-modal-offcanvas.js') }}"></script>
+@endpush
+```
 
 ### Filter
 Filter `Button` show below code in blade: 
@@ -379,5 +406,12 @@ Default offcanvas don't need any params, if need to change modal window like cod
 Install [Font-Awesome](https://fontawesome.com/v4.7.0/) Search "sort" in [cheatsheet](https://fontawesome.com/v4.7.0/icons/) and see used icons (12) yourself.
 
 Completed.
+
+## Bootstrap 5 version
+
+## Don't declare at the sametime two type of js file. at time only one js using
+
+Thanks.
+
 
 
