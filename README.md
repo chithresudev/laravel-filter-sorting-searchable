@@ -403,9 +403,9 @@ Default offcanvas don't need any params, if need to change modal window like cod
 3. if **viewport_direction** is `modal` placement modal-dialog-position (like: `modal-dialog-centered, modal-size-(xl)*`)
 
 
-### Font Awesome (default font classes)
+### Font Awesome 6.1.2 (default font classes)
 
-Install [Font-Awesome](https://fontawesome.com/v4.7.0/) Search "sort" in [cheatsheet](https://fontawesome.com/v4.7.0/icons/) and see used icons (12) yourself.
+Install [Font-Awesome](https://fontawesome.com/icons/) Search "sort" in [cheatsheet](https://fontawesome.com/icons/) and see used icons yourself.
 
 Completed.
 
