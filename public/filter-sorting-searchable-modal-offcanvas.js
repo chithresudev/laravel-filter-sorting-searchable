@@ -33,7 +33,7 @@ getDataElements.forEach((getDataElement) => {
     // Binding what are the params filter
     if (searchParams.get(filterKeys)) {
       isFilterCount++;
-      const existParamBind = `<span class="badge low w-auto rounded-5  py-1 me-2 mb-2" data-param-field=${filterKeys}>
+      const existParamBind = `<span class="badge border text-secondary border-secondary w-auto rounded-5  py-1  me-2 mb-2" data-param-field=${filterKeys}>
                     ${filterLabel} : ${searchParams.get(
         filterKeys
       )} <button type="button" class="btn-close ms-2" onClick="filterRemove(this)" ></button>
@@ -112,43 +112,56 @@ getDataElements.forEach((getDataElement) => {
 
   if (isSorting) {
     if (searchParams.get("sort_field") == filterKeys) {
-      const existParamBind = `<span class="badge high w-auto rounded-5 py-1 me-2 mb-2" data-param-field=${filterKeys}>  
+      const existParamBind = `<span class="badge text-primary border border-primary w-auto rounded-5 py-1 me-2 mb-2" data-param-field=${filterKeys}>  
             ${filterLabel} :  Sort By  ${searchParams
         .get("sort_direction")
         .toUpperCase()}
-             <button type="button" class="btn-close ms-2" onClick="filterRemove(this)" ></button>
+             <button type="button" class="btn-close ms-2 p-1" onClick="filterRemove(this)" ></button>
         </span>`;
-      bindingParam.insertAdjacentHTML("beforeend", existParamBind);
+      bindingParam.insertAdjacentHTML("afterbegin", existParamBind);
     }
 
     switch (true) {
       case filterKeys == "name" && searchParams.get("sort_field") == "name":
-        var icon = ` <i class="fa fa-sort-alpha`;
+        const letterUpDown =
+          searchParams.get("sort_direction") == "desc" ? "down-z-a" : "up-a-z";
+
+        var icon = `<i class="fa-solid fa-arrow-${letterUpDown}></i>`;
         break;
 
       case filterKeys == "id" && searchParams.get("sort_field") == "id":
       case filterKeys == "created_at" &&
         searchParams.get("sort_field") == "created_at":
-        var icon = ` <i class="fa fa-sort-numeric`;
+        const numberUpDown =
+          searchParams.get("sort_direction") == "desc" ? "down-9-1" : "up-1-9";
+
+        var icon = `<i class="fa-solid fa-arrow-${numberUpDown}"></i>`;
+
         break;
 
       case filterKeys == "amount" && searchParams.get("sort_field") == "amount":
-        var icon = ` <i class="fa fa-sort-amount`;
+        const amountUpDown =
+          searchParams.get("sort_direction") == "desc"
+            ? "down-short-wide"
+            : "up-wide-short";
+
+        var icon = `<i class="fa-solid fa-arrow-${amountUpDown}"></i>`;
+
         break;
 
       default:
-        var icon = ` <i class="fa fa-sort`;
+        if (filterKeys != searchParams.get("sort_field")) {
+          var icon = ` <i class="fa-solid fa-arrows-up-down"></i>`;
+        } else {
+          const upDown =
+            searchParams.get("sort_direction") == "desc" ? "down" : "up";
+          var icon = ` <i class="fa-solid fa-arrow-${upDown}"></i>`;
+        }
+
         break;
     }
 
-    getDataElement.insertAdjacentHTML(
-      "beforeend",
-      ` ${icon}${
-        filterKeys == searchParams.get("sort_field")
-          ? "-" + searchParams.get("sort_direction")
-          : ""
-      }"></i>`
-    );
+    getDataElement.insertAdjacentHTML("beforeend", icon);
 
     getDataElement.setAttribute("onClick", "sortingOrder(this)");
     getDataElement.style.textDecoration = "none";
@@ -224,10 +237,10 @@ if (isFilterCount) {
 }
 
 if (searchParams.get("search")) {
-  const existParamBind = `<span class="badge medium w-auto rounded-5 py-1 me-2 mb-2" data-param-field='search'> Search value :  ${searchParams.get(
+  const existParamBind = `<span class="badge text-primary border border-primary w-auto rounded-5 py-1 me-2 mb-2" data-param-field='search'> Search value :  ${searchParams.get(
     "search"
   )}
-     <button type="button" class="btn-close ms-2" onClick="filterRemove(this)" ></button>
+     <button type="button" class="btn-close ms-2 p-1" onClick="filterRemove(this)" ></button>
 </span>`;
   bindingParam.insertAdjacentHTML("afterbegin", existParamBind);
 }

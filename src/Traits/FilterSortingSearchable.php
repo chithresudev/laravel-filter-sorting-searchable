@@ -40,8 +40,8 @@ trait FilterSortingSearchable
      */
     public function scopeSearchable(Builder $query) {
 
-        $search = app('request')->search;
-        if(is_array($this->searchable)) {
+        if(is_array($this->searchable) && app('request')->has('search')) {
+            $search = app('request')->search;
             foreach($this->searchable as $field) {
                     $query->orWhere($field, 'LIKE' , '%' .  $search . '%');
         }
