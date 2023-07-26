@@ -7,7 +7,7 @@ This Package for handling dynamic column sorting, filter and searchable in Larav
 
 ## Installation & Usages
 
-### Installation
+### Basic Setup
 
 Install via composer; in console: 
 ```
@@ -32,7 +32,7 @@ Find 'providers=>[]' add inside below code (Custom Service Providers...)
 ```php
 Devchithu\LaravelFilterSortingSearchable\Providers\FilterSortingSearchableProvider::class,
 ```
-Example like code : 
+Example like code :  project/config/app.php
 
 ```php
 'providers' => [
@@ -69,7 +69,11 @@ php artisan vendor:publish --provider="Devchithu\LaravelFilterSortingSearchable\
 ```
 See public/js/filter-sorting-searchable.js (if you want any change update this code inside)
 
-## Blade Extension
+# Bootstrap Inline filter sorting and Modal, Offcanvas extension
+
+Two Type of blade extension using script file.
+
+##  Bootstrap Inline filter sorting Blade Extension
 Must push that js file in blade, where-ever your want like (better than push that js file into main index blade.php):
 
 ```
