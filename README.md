@@ -87,7 +87,7 @@ OR,
 @endpush
 ```
 
-### Sorting
+## * Sorting
 
 There is a blade extension for you to use **@filterSort()**
 
@@ -135,7 +135,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 }
 ```
 
-# Controller's `index()` method
+### Controller's `index()` method
 
 ```php
 public function index(Request $request)
@@ -145,8 +145,8 @@ public function index(Request $request)
     return view('user.index', ['users' => $users]);
 }
 ```
- 
-### Inline Filter
+ hr
+## Inline Filter
 
 ***Blade table config***
 
@@ -188,7 +188,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 }
 ```
 
-# Controller's `index()` method
+### Controller's `index()` method
 
 ```php
 public function index(Request $request)
