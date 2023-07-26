@@ -19,6 +19,11 @@ class FilterSortingSearchableProvider extends ServiceProvider
         ], 'public');
         
 
+        $this->publishes([
+            __DIR__.'/../../src/CustomFilter' => app_path('/'),
+        ], 'app/CustomFilter');
+        
+
         Blade::directive('filterSort', function ($input_array) {
 
             return "<?php Devchithu\LaravelFilterSortingSearchable\Filter::applyData({$input_array}) ?>";

@@ -126,7 +126,7 @@ getDataElements.forEach((getDataElement) => {
         const letterUpDown =
           searchParams.get("sort_direction") == "desc" ? "down-z-a" : "up-a-z";
 
-        var icon = `<i class="fa-solid fa-arrow-${letterUpDown}></i>`;
+        var icon = `<i class="fa-solid fa-arrow-${letterUpDown}"></i>`;
         break;
 
       case filterKeys == "id" && searchParams.get("sort_field") == "id":
