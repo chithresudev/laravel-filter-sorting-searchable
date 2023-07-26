@@ -94,11 +94,250 @@ There is a blade extension for you to use **@filterSort()**
 ```blade
 @filterSort(['sorting' => true,'field_name' => 'name'])
 ```
+
+**Custom field name sorting**
+```blade
+@filterSort(['sorting' => true,'field_name' => 'name', 'label_name' => 'Name'])
+```
+
 **Here**,
 1. `sorting` parameter default is false. `true` is sorting enabled, if don't need sorting just put `false` or just remove sorting parames.
 2. `field_name` parameter is column in database table field, **name**.
 3. `label_name` parameter is displayed inside anchor tags and print valueable field name. incase of  `label_name` doe'st use automatically get column in database table field.
-   
+
+**what are field sorting declare the using your *Eloquent* model(s) inside function like below code**,
+
+Use **FilterSortSearchable** trait inside your *Eloquent* model(s).
+
+```php
+use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword, FilterSortingSearchable;
+    ...
+    ...
+
+    /**
+     * The table sorting order asc and desc.
+     *
+     * @var string
+     */
+
+    public $sorting = [
+        'id',
+        'name',
+        'email',
+        'created_at',
+    ];
+
+
+}
+```
+
+# Controller's `index()` method
+
+```php
+public function index(Request $request)
+{
+    $users = User::sorting()->get();
+
+    return view('user.index', ['users' => $users]);
+}
+```
+ 
+### Inline Filter
+
+***Blade table config***
+
+There is a sorting similar same blade extension for you to use **@filterSort()**
+
+```blade
+ @filterSort(['filter' => true, 'field_name' => 'instance_type'])
+```
+
+**Custom field name filter**
+
+```blade
+@filterSort(['filter' => true,'field_name' => 'name', 'label_name' => 'Name'])
+```
+
+**what are field filterable declare the using your *Eloquent* model(s) inside function like below code**,
+
+```php
+use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword, FilterSortingSearchable;
+    ...
+    ...
+
+    /**
+     * The table filter order asc and desc.
+     *
+     * @var string
+     */
+
+     public $filterable = [
+        'id',
+        'name',
+        'email'
+    ];
+
+}
+```
+
+# Controller's `index()` method
+
+```php
+public function index(Request $request)
+{
+    $users = User::filterable()->get();
+
+    return view('user.index', ['users' => $users]);
+}
+```
+
+## Sorting & Filter
+
+Incase, If you want sort and filter sametime  using below Code, 
+
+```blade
+ @filterSort(['sotring' => true, 'filter' => true, 'field_name' => 'status_type', 'label_name' => 'Status Type '])
+```
+
+**Here**,
+1. `filter` parameter default is false. `true` is filter enabled, if don't need filter just put `false` or just remove filter parames.
+2. `field_name` parameter is column in database table field, **name**.
+3. `label_name` parameter is displayed inside anchor tags and print valueable field name. incase of  `label_name` doe'st use automatically get column in database table field.
+
+**UI - filter input field automatically generate**
+
+1. filter is `true` default create input box type = 'text', if you want different input type like (selelect, radio, range) below code put the array params
+   `'type' => 'text' // 'type' => 'select' or  radio, range`
+
+Here, if you `select ` option using  multiple option value data like `'multiple_option' => ['All', 'active', 'in_active']
+
+```blade
+ @filterSortSearchable(['sorting' => true, 'filter' => true, 'type' => 'select', 'field_name' => 'status', 'label_name' => 'Status', 'custom-multiple-data' => ['All', 'active', 'in_active']])
+                               
+```
+
+**what are field sorting and filter declare the using your *Eloquent* model(s) inside function like below code**,
+
+```php
+use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword, FilterSortingSearchable;
+    ...
+    ...
+
+    /**
+     * The table sorting order asc and desc.
+     *
+     * @var string
+     */
+
+    public $sorting = [
+        'id',
+        'name',
+        'email',
+        'created_at',
+    ];
+
+    /**
+     * The table filter.
+     *
+     * @var string
+     */
+
+     public $filterable = [
+        'id',
+        'name',
+        'email'
+    ];
+
+}
+```
+
+### Controller's `index()` method
+
+```php
+public function index(Request $request)
+{
+    $users = User::sorting()->filterable()->get();
+
+    return view('user.index', ['users' => $users]);
+}
+```
+
+### Controller's `index()` method with paginate()
+
+```php
+public function index(Request $request)
+{
+    $users = User::sorting()->filterable()->paginate(20);
+
+    return view('user.index', ['users' => $users]);
+}
+```
+
+## Searchable
+This searchable global area find the table data
+
+**what are field searchable declare the using your *Eloquent* model(s) inside function like below code**,
+
+```php
+use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword, FilterSortingSearchable;
+    ...
+    ...
+
+    /**
+     * The table searchable.
+     *
+     * @var string
+     */
+
+     public $searchable = [
+        'id',
+        'name',
+        'email'
+    ];
+
+}
+```
+
+### Controller's `index()` method
+
+```php
+public function index(Request $request)
+{
+    $users = User::searchable()->get();
+
+    return view('user.index', ['users' => $users]);
+}
+```
+
+###  Controller's `index()` method
+If you want filter, sorting, searchable declare the scope function
+
+```php
+public function index(Request $request)
+{
+    $users = User::sorting()->filterable()->searchable()->get();
+
+    return view('user.index', ['users' => $users]);
+}
+```
+##  2. Bootstrap filter using Modal, Offcanvas Blade Extension
+
 ### Filter
 Filter `Button` show below code in blade: 
 Whereever you want filter button put the code **@filterBtn()**
@@ -134,70 +373,11 @@ Default offcanvas don't need any params, if need to change modal window like cod
 2. if **viewport_direction** is `offcanvas` placement direction (like: `offcanvas-start, offcanvas-end, offcanvas-top, offcanvas-bottom`)
 3. if **viewport_direction** is `modal` placement modal-dialog-position (like: `modal-dialog-centered, modal-size-(xl)*`)
 
-***Blade table config***
-
-There is a sorting same blade extension for you to use **@filterSort()**
-
-```blade
- @filterSort(['filter' => true, 'field_name' => 'instance_type'])
-```
-
-**Custom field name sorting and filter**
-
-```blade
-@filterSort(['sorting' => true,'field_name' => 'name', 'label_name' => 'Name'])
-```
-
-### Sorting & Filter
-
-Code, 
-
-```blade
- @filterSort(['sotring' => true, 'filter' => true, 'field_name' => 'status_type', 'label_name' => 'Status Type '])
-```
-
-**Here**,
-1. `filter` parameter default is false. `true` is filter enabled, if don't need filter just put `false` or just remove filter parames.
-2. `field_name` parameter is column in database table field, **name**.
-3. `label_name` parameter is displayed inside anchor tags and print valueable field name. incase of  `label_name` doe'st use automatically get column in database table field.
-
-**UI - filter input field automatically generate**
-
-1. filter is `true` default create input box type = 'text', if you want different input type like (selelect, radio, range) below code put the array params
-   `'type' => 'text' // 'type' => 'select' or  radio, range`
-
-Here, if you `select ` option using  multiple option value data like `'multiple_option' => ['All', 'active', 'in_active']
-
-```blade
- @filterSortSearchable(['sorting' => true, 'filter' => true, 'type' => 'select', 'field_name' => 'status', 'label_name' => 'Status', 'custom-multiple-data' => ['All', 'active', 'in_active']])
-                               
-```
-
-### Controller's `index()` method
-
-```php
-public function index(Request $request)
-{
-    $users = User::filterable()->get();
-
-    return view('user.index', ['users' => $users]);
-}
-```
-
-### Controller's `index()` method with paginate()
-
-```php
-public function index(Request $request)
-{
-    $users = User::filterable()->paginate(20);
-
-    return view('user.index', ['users' => $users]);
-}
-```
 
 ## Font Awesome (default font classes)
 
 Install [Font-Awesome](https://fontawesome.com/v4.7.0/) Search "sort" in [cheatsheet](https://fontawesome.com/v4.7.0/icons/) and see used icons (12) yourself.
 
 Completed.
+
 
