@@ -73,7 +73,7 @@ See public/js/filter-sorting-searchable.js (if you want any change update this c
 
 Two Type of blade extension using script file.
 
-##  Bootstrap Inline filter sorting Blade Extension
+##  1. Bootstrap Inline filter sorting Blade Extension
 Must push that js file in blade, where-ever your want like (better than push that js file into main index blade.php):
 
 ```
