@@ -109,6 +109,8 @@ There is a blade extension for you to use **@filterSort()**
 
 Use **FilterSortSearchable** trait inside your *Eloquent* model(s).
 
+### *Eloquent* model 
+
 ```php
 use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
 
@@ -145,8 +147,8 @@ public function index(Request $request)
     return view('user.index', ['users' => $users]);
 }
 ```
- hr
-## Inline Filter
+
+## * Inline Filter
 
 ***Blade table config***
 
@@ -285,7 +287,7 @@ public function index(Request $request)
 }
 ```
 
-## Searchable
+## *Searchable
 This searchable global area find the table data
 
 **what are field searchable declare the using your *Eloquent* model(s) inside function like below code**,
@@ -341,7 +343,7 @@ public function index(Request $request)
     return view('user.index', ['users' => $users]);
 }
 ```
-# Binding Params
+## * Binding Params
 What are field sorting, searching and filterting below code
 Which place to you want binding parameters declare the **@bindingParams()**
 
@@ -365,7 +367,7 @@ OR,
 @endpush
 ```
 
-### Filter
+## Modal Offcanvas Filter
 Filter `Button` show below code in blade: 
 Whereever you want filter button put the code **@filterBtn()**
 
@@ -401,17 +403,21 @@ Default offcanvas don't need any params, if need to change modal window like cod
 3. if **viewport_direction** is `modal` placement modal-dialog-position (like: `modal-dialog-centered, modal-size-(xl)*`)
 
 
-## Font Awesome (default font classes)
+### Font Awesome (default font classes)
 
 Install [Font-Awesome](https://fontawesome.com/v4.7.0/) Search "sort" in [cheatsheet](https://fontawesome.com/v4.7.0/icons/) and see used icons (12) yourself.
 
 Completed.
 
-## Bootstrap 5 version
+### Bootstrap 5 version
 
-## Don't declare at the sametime two type of js file. at time only one js using
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-Thanks.
+
+***Don't declare at the sametime two type of js file. at time only one using js file***
+
+Thank you .
 
 
 
