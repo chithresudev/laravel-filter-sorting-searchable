@@ -356,6 +356,32 @@ php artisan vendor:publish --tag=customFilterTrait
 ```
 See app\CustomFilter\CustomFilterTrait.php (if you want any change update this code inside)
 
+**what are the customized filter field don't declare the using your *Eloquent* model(s) inside function**,
+
+```php
+use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable, CanResetPassword, FilterSortingSearchable;
+    ...
+    ...
+
+
+    /**
+     * The table filter.
+     *
+     * @var string
+     */
+
+     public $filterable = [
+
+    ];
+
+}
+```
+
+
 ## * Binding Params
 What are field sorting, searching and filterting below code
 Which place to you want binding parameters declare the **@bindingParams()**
