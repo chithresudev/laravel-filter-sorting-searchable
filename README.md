@@ -17,7 +17,7 @@ or require in *composer.json*:
 ```json
 {
     "require": {
-        "devchithu/laravel-filter-sorting-searchable": "^2.0"
+        "devchithu/laravel-filter-sorting-searchable": "^1.0"
     }
 }
 ```
@@ -62,12 +62,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 ## Publish Js file
 
-then run publish cmd You must to publish only js file and where-ever your want 'filter, sort, searchable' using the below script in blade.php file
+then run publish cmd you must to publish only js file and where-ever your want 'filter, sort, searchable' using the below script in blade.php file
 
 ```
-php artisan vendor:publish --provider="Devchithu\LaravelFilterSortingSearchable\Providers\FilterSortingSearchableProvider"
+php artisan vendor:publish --tag=filter-sorting-searchable
 ```
-See public/js/filter-sorting-searchable.js (if you want any change update this code inside)
+See public/filter-sorting-searchable.js (if you want any change update this code inside)
 
 # Bootstrap Inline filter sorting extension
 
@@ -353,6 +353,15 @@ Which place to you want binding parameters declare the **@bindingParams()**
 OR,
 
 ##  2. Bootstrap filter using Modal, Offcanvas Blade Extension
+
+## Publish Js file
+
+then run publish cmd you must to publish only js file your want 'filter, sort, searchable' using the below script in blade.php file
+
+```
+php artisan vendor:publish --tag=filter-sorting-searchable-modal-offcanvas
+```
+See public/filter-sorting-searchable-modal-offcanvas.js (if you want any change update this code inside)
 
 Must push that js file in blade, where-ever your want like (better than push that js file into main index blade.php):
 
