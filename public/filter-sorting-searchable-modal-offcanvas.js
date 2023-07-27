@@ -39,7 +39,7 @@ getDataElements.forEach((getDataElement) => {
       )} <button type="button" class="btn-close ms-2" onClick="filterRemove(this)" ></button>
                 </span>`;
 
-      bindingParam.insertAdjacentHTML("beforeend", existParamBind);
+      bindingParam?.insertAdjacentHTML("beforeend", existParamBind);
     }
 
     const filterType = getDataElement.dataset.filterInputType;
@@ -118,7 +118,7 @@ getDataElements.forEach((getDataElement) => {
         .toUpperCase()}
              <button type="button" class="btn-close ms-2 p-1" onClick="filterRemove(this)" ></button>
         </span>`;
-      bindingParam.insertAdjacentHTML("afterbegin", existParamBind);
+      bindingParam?.insertAdjacentHTML("afterbegin", existParamBind);
     }
 
     switch (true) {
@@ -235,7 +235,7 @@ function filterRemove(removeElementParam) {
 if (isFilterCount) {
   const clearAll = `<button type="button" class="btn-sm btn btn-danger rounded-5 px-3 py-1 me-2 mb-1" onClick="filterRemove()">Clear All</button>`;
 
-  bindingParam.insertAdjacentHTML("beforeend", clearAll);
+  bindingParam?.insertAdjacentHTML("beforeend", clearAll);
 }
 
 if (searchParams.get("search")) {
@@ -244,7 +244,7 @@ if (searchParams.get("search")) {
   )}
      <button type="button" class="btn-close ms-2 p-1" onClick="filterRemove(this)" ></button>
 </span>`;
-  bindingParam.insertAdjacentHTML("afterbegin", existParamBind);
+  bindingParam?.insertAdjacentHTML("afterbegin", existParamBind);
 }
 
 function searchAndHighlight() {

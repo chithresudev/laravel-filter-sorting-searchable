@@ -26,7 +26,7 @@ trait FilterSortingSearchable
                     $namespace = app()->getNamespace() . "CustomFilter\\CustomFilterTrait";
                     $query = $namespace::customFilter($query, $column_key, $column_value);
                 } catch (\Throwable $th) {
-                    return $query;
+                    $query = $query;
                 }
                 
                 if(in_array($column_key, $this->filterable)) {
