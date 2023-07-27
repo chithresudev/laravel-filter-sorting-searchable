@@ -352,6 +352,11 @@ Which place to you want binding parameters declare the **@bindingParams()**
 ```php
 @bindingParams()
 ```
+Run finally,
+```
+php artisan op:cl
+```
+
 OR,
 
 ##  2. Bootstrap filter using Modal, Offcanvas Blade Extension
@@ -433,6 +438,10 @@ JS File
 
 ```
 
+Run finally,
+```
+php artisan op:cl
+```
 
 ***Don't declare at the sametime two type of js file, at time only one using js file***
 
