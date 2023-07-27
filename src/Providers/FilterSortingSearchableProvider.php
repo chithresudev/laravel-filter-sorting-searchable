@@ -19,7 +19,7 @@ class FilterSortingSearchableProvider extends ServiceProvider
         ], 'filter-sorting-searchable');
         
         $this->publishes([
-            __DIR__.'/../../public/filter-sorting-searchable.js' => public_path('filter-sorting-searchable.js'),
+            __DIR__.'/../../public/filter-sorting-searchable-modal-offcanvas.js' => public_path('filter-sorting-searchable-modal-offcanvas.js'),
         ], 'filter-sorting-searchable-modal-offcanvas');
         
 
