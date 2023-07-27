@@ -344,7 +344,18 @@ public function index(Request $request)
 
     return view('user.index', ['users' => $users]);
 }
+
 ```
+
+
+## *customized filter 
+If you want filter some field customazed used here file
+
+```
+php artisan vendor:publish --tag=customFilterTrait
+```
+See app\CustomFilter\CustomFilterTrait.php (if you want any change update this code inside)
+
 ## * Binding Params
 What are field sorting, searching and filterting below code
 Which place to you want binding parameters declare the **@bindingParams()**
@@ -381,6 +392,15 @@ OR,
 @push('scripts')
     <script src="{{ asset('filter-sorting-searchable-modal-offcanvas.js') }}"></script>
 @endpush
+```
+
+
+## Sorting & Filter
+
+Incase, If you want sort and filter sametime  using below Code, 
+
+```blade
+ @filterSort(['sotring' => true, 'filter' => true, 'field_name' => 'status_type', 'label_name' => 'Status Type '])
 ```
 
 ## Modal Offcanvas Filter
