@@ -15,13 +15,17 @@ class FilterSortingSearchableProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../public' => public_path('/'),
-        ], 'public');
+            __DIR__.'/../../public/filter-sorting-searchable.js' => public_path('filter-sorting-searchable.js'),
+        ], 'filter-sorting-searchable');
+        
+        $this->publishes([
+            __DIR__.'/../../public/filter-sorting-searchable.js' => public_path('filter-sorting-searchable.js'),
+        ], 'filter-sorting-searchable-modal-offcanvas');
         
 
         $this->publishes([
-            __DIR__.'/../../src/CustomFilter' => app_path('/'),
-        ], 'app/CustomFilter');
+            __DIR__.'/../../src/CustomFilter/CustomFilterTrait.php' => app_path('CustomFilter/CustomFilterTrait.php'),
+        ], 'customFilterTrait');
         
 
         Blade::directive('filterSort', function ($input_array) {
