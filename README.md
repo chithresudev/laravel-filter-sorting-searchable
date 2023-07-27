@@ -348,7 +348,7 @@ public function index(Request $request)
 ```
 
 
-## *customized filter 
+# *customized filter 
 If you want filter some field customazed used here file
 
 ```
@@ -356,7 +356,7 @@ php artisan vendor:publish --tag=customFilterTrait
 ```
 See app\CustomFilter\CustomFilterTrait.php (if you want any change update this code inside)
 
-**what are the customized filter field don't declare the using your *Eloquent* model(s) inside function**,
+**what are the customized filter field don't declare  (filterable) array. declare custom filterable the using your *Eloquent* model(s) inside function**,
 
 ```php
 use Devchithu\LaravelFilterSortingSearchable\Traits\FilterSortingSearchable;
@@ -374,8 +374,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var string
      */
 
-     public $filterable = [
-
+     public $customfilterable = [
+            'name',
+            'status',
     ];
 
 }
