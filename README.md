@@ -70,8 +70,8 @@ php artisan vendor:publish --tag=filter-sorting-searchable
 See public/filter-sorting-searchable.js (if you want any change update this code inside)
 
 # Two method of design filter sorting extension
-### 1. Bootstrap Inline filter sorting Blade Extension
-### 2. Bootstrap filter using Modal, Offcanvas Blade Extension
+#### 1. Bootstrap Inline filter sorting Blade Extension
+#### 2. Bootstrap filter using Modal, Offcanvas Blade Extension
 
 Two Type of blade extension using script file.
 
