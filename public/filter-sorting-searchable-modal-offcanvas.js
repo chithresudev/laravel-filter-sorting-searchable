@@ -179,7 +179,9 @@ btnElement.className = "btn btn-primary";
 btnDiv.append(btnElement);
 createForm.append(btnDiv);
 fragmentElement.append(createForm);
-getBindingElements.append(fragmentElement);
+if (getBindingElements) {
+  getBindingElements.append(fragmentElement);
+}
 
 createForm.addEventListener("submit", function (e) {
   e.preventDefault();
