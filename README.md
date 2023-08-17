@@ -5,6 +5,10 @@
 
 This Package for handling dynamic column sorting, filter and searchable in Laravel.
 
+
+![Screenshot](public/filter_sort_searchable.gif)
+
+
 ## Installation & Usages
 
 ### Basic Setup
@@ -58,6 +62,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     ...
     ...
 }
+```
+
+### Font Awesome 6.4^ (default font classes)
+
+Install [Font-Awesome](https://fontawesome.com/icons/) Search "sort" in [cheatsheet](https://fontawesome.com/icons/) and see used icons yourself.
+
+```blade
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+```
+Completed.
+
+### Bootstrap 5 version
+
+CSS File
+```code
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+```
+JS File
+
+```code
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
+
 ```
 
 ## Publish Js file
@@ -224,7 +250,7 @@ Incase, If you want sort and filter sametime  using below Code,
 Here, if you `select ` option using  multiple option value data like `'multiple_option' => ['All', 'active', 'in_active']
 
 ```blade
- @filterSortSearchable(['sorting' => true, 'filter' => true, 'type' => 'select', 'field_name' => 'status', 'label_name' => 'Status', 'custom-multiple-data' => ['All', 'active', 'in_active']])
+ @filterSortSearchable(['sorting' => true, 'filter' => true, 'type' => 'select', 'field_name' => 'status', 'label_name' => 'Status', 'multiple_option' => ['All', 'active', 'in_active']])
                                
 ```
 
@@ -387,7 +413,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 What are field sorting, searching and filterting below code
 Which place to you want binding parameters declare the **@bindingParams()**
 
-```php
+```blade
 @bindingParams()
 ```
 Run finally,
@@ -465,25 +491,6 @@ Default offcanvas don't need any params, if need to change modal window like cod
 2. if **viewport_direction** is `offcanvas` placement direction (like: `offcanvas-start, offcanvas-end, offcanvas-top, offcanvas-bottom`)
 3. if **viewport_direction** is `modal` placement modal-dialog-position (like: `modal-dialog-centered, modal-size-(xl)*`)
 
-
-### Font Awesome 6.1.2 (default font classes)
-
-Install [Font-Awesome](https://fontawesome.com/icons/) Search "sort" in [cheatsheet](https://fontawesome.com/icons/) and see used icons yourself.
-
-Completed.
-
-### Bootstrap 5 version
-
-CSS File
-```code
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-```
-JS File
-
-```code
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
-
-```
 
 Run finally,
 ```
